@@ -105,7 +105,6 @@ W4 = rng.random((hidden_size_3, output_size))
 
 # W2 = np.array([[0.5,0.6],
 #                [0.7,0.8]])
-
 # W3 = np.array([[0.9],
 #                [0.95]])
 
@@ -121,7 +120,7 @@ W4 = rng.random((hidden_size_3, output_size))
 
 # 학습률과 반복수
 learning_rate = 0.01
-num_iterations = 500000
+num_iterations = 5000000
 error_list = []
 error_10000 = []
 # error_list = []
@@ -150,7 +149,7 @@ for i in range(num_iterations):
     W2 += learning_rate * a1.T.dot(delta_hidden_2)
     W1 += learning_rate * X.T.dot(delta_hidden_1)
 
-    if i % 10000 == 0:
+    if i % 1000 == 0:
         print(i,"회 반복 : ",error)
         error_list.append(abs(error))
 
@@ -158,7 +157,7 @@ for i in range(num_iterations):
 error_10000.append(error_list)
 error_10000 = np.array(error_10000)
 error_10000 = abs(error_10000.flatten())
-plt.yticks(np.arange(0, 1.1, 0.25))
+plt.yticks(np.arange(0, 1.1, 0.01))
 plt.plot(error_10000, label='error')
 plt.legend()
 plt.show()
